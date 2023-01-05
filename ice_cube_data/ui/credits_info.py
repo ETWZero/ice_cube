@@ -13,10 +13,10 @@ def credits_ui_panel(self, context):
     version_text = f"Ice Cube {BlenderVersConvert(bl_info['version'], has_v=True)}"
     b.label(text= version_text, icon= 'OUTLINER_OB_ARMATURE')
     credit_labels = {
-          "Created by DarthLilo": "lilocredits.link",
-          "Got a problem with the rig?": "discordserver.link",
-          "Want to add your own DLC?": "custom_presets.open",
-          "Need help with something?": "wiki.open"
+          "由DarthLilo制作": "lilocredits.link",
+          "使用模型时遇到问题？": "discordserver.link",
+          "想要添加属于自己的DLC吗？": "custom_presets.open",
+          "需要查阅帮助文档吗？": "wiki.open"
        }
     for label in credit_labels:
         b = box.row(align = True)

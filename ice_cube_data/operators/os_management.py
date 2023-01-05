@@ -36,7 +36,7 @@ def open_user_packs(self, context):
         asset_directory_linux = root_folder+"/ice_cube_data/internal_files/user_packs/"
         subprocess.Popen(['xdg-open', asset_directory_linux])
     else:
-        CustomErrorBox(message="Please contact \"DarthLilo#4103\" on discord for help.", title="Unknown Operating System", icon='ERROR')
+        CustomErrorBox(message="在Discord上请联系“DarthLilo#4103”以寻求帮助。", title="未知操作系统", icon='ERROR')
 
     return{'FINISHED'}
 
@@ -48,10 +48,10 @@ def install_update_func(self, context):
     can_backup = False
     #checks if the downloads folder exists, if not, create one.
     if os.path.exists(downloads_folder):
-        print("Path Found")
+        print("路径已找到")
     else:
         os.mkdir(downloads_folder)
-        print("Created Downloads Folder")
+        print("创建下载文件夹")
 
     download_folder = os.path.normpath(downloads_folder)
     backups_folders = os.path.normpath(backups_folders)
@@ -71,7 +71,7 @@ def install_update_func(self, context):
             break
     
     if can_backup == False:
-        CustomErrorBox("Please create an up-to-date backup before updating!","No updated backup found!","ERROR")
+        CustomErrorBox("Please create an up-to-date backup before updating!在更新之前，请创建一个最新版本的备份！","找不到已更新的备份！","ERROR")
         return{'FINISHED'}
     
 
@@ -86,13 +86,13 @@ def install_update_func(self, context):
     #download the zip
     try:
         request.urlretrieve(github_zip, download_file_loc)
-        print("File Downloaded!")
+        print("File Downloaded!文件已下载！")
     except Exception as e:
-        CustomErrorBox(str(e), "Error while downloading update.", icon="CANCEL")
-        print("Error while downloading file.")
+        CustomErrorBox(str(e), "在下载更新时发生了错误。", icon="CANCEL")
+        print("在下载文件时发生了错误。")
     #unzips the file
     try:
-        print(f"Unzipping File")
+        print(f"解压文件")
         with zipfile.ZipFile(download_file_loc, 'r') as zip_ref:
             zip_ref.extractall(download_folder)
         print("Successfully Unzipped File!")
@@ -105,7 +105,7 @@ def install_update_func(self, context):
             pass
         print("Cleaned Folder")
     except Exception as e:
-        CustomErrorBox(str(e), "Error unpacking update file.", icon="CANCEL")
+        CustomErrorBox(str(e), "在解压更新文件时发生了错误。", icon="CANCEL")
         print("Unknown Error")
     #Rename the downloaded file to Ice Cube
     for file in getFiles(download_folder):
@@ -117,10 +117,10 @@ def install_update_func(self, context):
     try:
         distutils.dir_util.copy_tree(download_folder+"/Ice Cube", install_loc)
         print("Finished Install!")
-        CustomErrorBox("Finished installing update! Restart Blender before continuing!","Updated Finished",'INFO')
+        CustomErrorBox("已成功安装更新！在继续操作前请重启Blender！","更新完成",'INFO')
     except Exception as e:
         print("Error Completing Install.")
-        CustomErrorBox(str(e),"Error installing update file.",'ERROR')
+        CustomErrorBox(str(e),"在安装更新时发生了问题。",'ERROR')
 
     return{'FINISHED'}
 
@@ -199,9 +199,9 @@ def create_backup_func(self, context):
                 pass
         else:
             backup_name = "main"
-        CustomErrorBox(f"Created Backup: [{backup_name}]", "Created Backup", 'INFO')
+        CustomErrorBox(f"创建备份： [{backup_name}]", "创建备份", 'INFO')
     except:
-        CustomErrorBox(f"An Error Has Occured: [{backup_name}]", "Unknown Error", 'ERROR')
+        CustomErrorBox(f"产生了一个错误: [{backup_name}]", "未知错误", 'ERROR')
     
     downloads_path = f"{root_folder}/ice_cube_data/ui/advanced/downloads.py"
     exec(open(downloads_path).read())
@@ -217,15 +217,15 @@ def load_backup_func(self, context):
     #check if you've entered a backup name, if not, give a prompt, if so, check if that folder exists and create one if it doesn't exist.
     if obj.get("backup_name"):
         if obj.get("backup_name") == "":
-            CustomErrorBox("NO BACKUP FOUND","Selection Error",'ERROR')
+            CustomErrorBox("未找到备份","选择错误",'ERROR')
         else:
             if os.path.exists(backups_folder):
                 distutils.dir_util.copy_tree(backups_folder, virtual_ice_cube)
-                CustomErrorBox(f"Loaded Backup: [{selected_backup}], restart Blender for changes!", "Loaded Backup", 'INFO')
+                CustomErrorBox(f"加载备份：[{selected_backup}]，重启Blender以加载修改！", "加载备份", 'INFO')
             else:
-                CustomErrorBox("INVALID BACKUP","Selection Error",'ERROR')
+                CustomErrorBox("无效的备份","选择错误",'ERROR')
     else:
-        CustomErrorBox("NO BACKUP FOUND","Selection Error",'ERROR')
+        CustomErrorBox("未找到备份","选择错误",'ERROR')
 
 
     return{'FINISHED'}
@@ -242,9 +242,9 @@ def delete_backup_func(self, context):
         backup_to_remove = os.path.dirname(backups_folder)+"/backups/"+selected_backup
         if os.path.exists(backup_to_remove) and backup_to_remove != backups_folder and backup_to_remove != backups_folder+"/":
             shutil.rmtree(backup_to_remove)
-            CustomErrorBox(f"Deleted Backup: [{selected_backup}]", "Deleted Backup", 'INFO')
+            CustomErrorBox(f"删除备份：[{selected_backup}]", "删除备份", 'INFO')
         else:
-            CustomErrorBox("No backup found!","Invalid Backup",'ERROR')
+            CustomErrorBox("未找到备份","无效备份",'ERROR')
 
         downloads_path = f"{root_folder}/ice_cube_data/ui/advanced/downloads.py"
         exec(open(downloads_path).read())
@@ -255,7 +255,7 @@ def download_dlc_func(self, context, dlc_id):
         obj = context.object
         selected_dlc = getattr(obj,"dlc_list")
         if selected_dlc == "":
-            CustomErrorBox("Select a valid DLC!","INVALID DLC",'ERROR')
+            CustomErrorBox("选择一个有效的DLC！","无效的DLC",'ERROR')
             return{'FINISHED'}
         #gets the latest data from the github "dlc_list.json" file
         github_repo = json.loads(request.urlopen(latest_dlc).read().decode())
@@ -286,7 +286,7 @@ def download_dlc_func(self, context, dlc_id):
                 request.urlretrieve(dlc_download, download_file_loc)
                 print("File Downloaded!")
             except:
-                CustomErrorBox("An unknown error has occured, canceled download.","Downloading Error","ERROR")
+                CustomErrorBox("发生了一个未知的错误。下载取消。","下载错误","ERROR")
             #unzips the file
             try:
                 print(f"Unzipping File")
@@ -307,13 +307,13 @@ def download_dlc_func(self, context, dlc_id):
                 #install the new DLC
                 distutils.dir_util.copy_tree(download_folder+"/"+dlc_id_name, dlc_folder)
                 print("Finished Install!")
-                CustomErrorBox("Finished installing DLC!","Updated Finished",'INFO')
+                CustomErrorBox("DLC安装成功！","更新完成",'INFO')
             except:
                 print("Error Completing Install.")
-                CustomErrorBox("Error Completing Install.","Updated Cancelled",'ERROR')
+                CustomErrorBox("在安装时发生了一个错误。","更新取消",'ERROR')
 
         except:
-            CustomErrorBox("Invalid DLC","Selection Error",'ERROR')
+            CustomErrorBox("无效的DLC","选择错误",'ERROR')
 
         return{'FINISHED'}
 
@@ -347,10 +347,10 @@ def export_settings_data(self, context):
         wm.clipboard = f"{converted_json_data}"
     elif obj.get("prop_clipboard") == False:
         if filepath == "":
-            CustomErrorBox("Please select a valid filepath!","Invalid File Path",'ERROR')
+            CustomErrorBox("请选择一个有效的文件路径！","无效的文件路径",'ERROR')
             return{'FINISHED'}
         if filename == "":
-            CustomErrorBox("Please enter a valid filename!","Invalid File Name",'ERROR')
+            CustomErrorBox("请输入一个有效的文件名","无效的文件名",'ERROR')
             return{'FINISHED'}
         with open(f"{filepath}/{filename}.ice_cube_data", "w") as json_file:
             json_file.write(converted_json_data)
@@ -369,13 +369,13 @@ def import_settings_data(self, context):
         try:
             settings_json_data = json.loads(wm.clipboard)
         except:
-            CustomErrorBox("Please export the settings data before attempting an import!","Invalid Clipboard Data!",'ERROR')
+            CustomErrorBox("请在尝试导入之前导出设置数据！","无效的剪贴板数据",'ERROR')
             return{'FINISHED'}
         try:
             settings_name = settings_json_data['name']
             prop_data = settings_json_data['prop_data']
         except:
-            CustomErrorBox("Please export the settings data before attempting an import!","Invalid Clipboard Data!",'ERROR')
+            CustomErrorBox("请在尝试导入之前导出设置数据！","无效的剪贴板数据",'ERROR')
             return{'FINISHED'}
         
         for prop in prop_data:
@@ -383,7 +383,7 @@ def import_settings_data(self, context):
                 setattr(obj, prop, prop_data[prop])
             except:
                 pass
-        CustomErrorBox("Successfully loaded settings data from clipboard!\nInteract with the scene to update!","Imported Settings",'INFO')
+        CustomErrorBox("成功地加载来自剪贴板的设置数据！\n交互一下场景以更新数据！","导入设置",'INFO')
     
     elif obj.get("prop_clipboard") == False:
         settings_json_data = ""
@@ -393,7 +393,7 @@ def import_settings_data(self, context):
         try:
             settings_json_data = open_json(filepath)
         except:
-            CustomErrorBox("Please select a valid settings file!","Invalid File!",'ERROR')
+            CustomErrorBox("请选择一个有效的设置文件！","无效的文件！",'ERROR')
             return{'FINISHED'}
         
         prop_data = settings_json_data['prop_data']
@@ -404,7 +404,7 @@ def import_settings_data(self, context):
                 print(f"{prop} == {prop_data[prop]}")
             except:
                 pass
-        CustomErrorBox(f"Successfully loaded settings data from file [{settings_json_data['name']}.ice_cube_data]!\nInteract with the scene to update!","Imported Settings",'INFO')
+        CustomErrorBox(f"成功地从[{settings_json_data['name']}.ice_cube_data]导入了设置数据！\n交互一下场景以更新数据！","导入设置",'INFO')
         
 
     return{'FINISHED'}
@@ -426,7 +426,7 @@ def reset_all_settings_func(self, context):
             print(f"{prop} == {prop_data[prop]}")
         except:
             pass
-    CustomErrorBox(f"Successfully reset settings data!\nInteract with the scene to update!","Imported Settings",'INFO')
+    CustomErrorBox(f"成功地重置了所有设置数据！\n交互一下场景以更新数据！","导入设置",'INFO')
         
 
     return{'FINISHED'}

@@ -4,30 +4,30 @@ import bpy
 def general_settings_main_UI(self, context, layout, obj, icon):
     box = layout.box()
     pcoll = icon["main"]
-    box.label(text= "General Settings", icon= 'TOOL_SETTINGS')
+    box.label(text= "通用设置", icon= 'TOOL_SETTINGS')
     
     box1 = box.box()
-    box1.label(text= "Misc", icon= 'FILE_CACHE')
+    box1.label(text= "杂项", icon= 'FILE_CACHE')
     b = box1.row(align=True)
-    b.prop(obj, "bendstyle", expand=True, text = "Sharp Bends")
+    b.prop(obj, "bendstyle", expand=True, text = "棱角弯曲")
     b = box1.row(align=True)
     b.prop(obj, "mouthtypes", expand=True)
     b = box1.row(align=True)
-    b.prop(obj, "facerig", toggle=True, text = "Face Rig")
+    b.prop(obj, "facerig", toggle=True, text = "面部控制器")
     b = box1.row(align=True)
-    b.prop(obj, "antilag", text = "Anti Lag")
-    b.prop(obj, "wireframe", text = "Wireframe")
+    b.prop(obj, "antilag", text = "优化操作帧率")
+    b.prop(obj, "wireframe", text = "线框")
     b = box1.row(align=True)
-    b.prop(obj, "mouthrotate", text = "Mouth Rotate")
-    b.prop(obj, "global_head_rotation", text = "Global Head Rot")
+    b.prop(obj, "mouthrotate", text = "嘴部旋转")
+    b.prop(obj, "global_head_rotation", text = "全局头部旋转")
     b = box1.row(align=True)
     preset = box1.box()
     b = preset.row(align=True)
-    b.prop(obj, "toggle_1", text = "Toggle 1")
-    b.prop(obj, "toggle_2", text = "Toggle 2")
+    b.prop(obj, "toggle_1", text = "切换1")
+    b.prop(obj, "toggle_2", text = "切换2")
     b = preset.row(align=True)
-    b.prop(obj, "toggle_3", text = "Toggle 3")
-    b.prop(obj, "toggle_4", text = "Toggle 4")
+    b.prop(obj, "toggle_3", text = "切换3")
+    b.prop(obj, "toggle_4", text = "切换4")
     
     box1 = box.box()
     my_icon = pcoll["Steve"]
@@ -42,36 +42,36 @@ def general_settings_main_UI(self, context, layout, obj, icon):
     b = box1.row(align=True)
     b.prop(obj, "armtype_enum", expand=True)
     b = box1.row(align=True)
-    b.prop(obj, "r_arm_ik", toggle=True, text = "Right Arm IK")
-    b.prop(obj, "l_arm_ik", toggle=True, text = "Left Arm IK")
+    b.prop(obj, "r_arm_ik", toggle=True, text = "右臂IK")
+    b.prop(obj, "l_arm_ik", toggle=True, text = "左臂IK")
     b = box1.row(align=True)
     if obj.get("r_arm_ik") == 1:
         stretchR = b.row(align=True)
-        stretchR.prop(obj, "stretch_arm_r", toggle=True, text = "Arm Stretch R")
+        stretchR.prop(obj, "stretch_arm_r", toggle=True, text = "右臂拉伸")
     else:
         stretchR = b.row(align=True)
-        stretchR.prop(obj, "stretch_arm_r", toggle=True, text = "Arm Stretch R")
+        stretchR.prop(obj, "stretch_arm_r", toggle=True, text = "右臂拉伸")
         stretchR.enabled = False
     
 
     if obj.get("l_arm_ik") == 1:
         stretchL = b.row(align=True)
-        stretchL.prop(obj, "stretch_arm_l", toggle=True, text = "Arm Stretch L")
+        stretchL.prop(obj, "stretch_arm_l", toggle=True, text = "左臂拉伸")
     else:
         stretchL = b.row(align=True)
-        stretchL.prop(obj, "stretch_arm_l", toggle=True, text = "Arm Stretch L")
+        stretchL.prop(obj, "stretch_arm_l", toggle=True, text = "左臂拉伸")
         stretchL.enabled = False
     
     b = box1.row(align=True)
-    b.prop(obj, "fingers_r", toggle=True, text = "Fingers R")
+    b.prop(obj, "fingers_r", toggle=True, text = "右手手指")
     
-    b.prop(obj, "fingers_l", toggle=True, text = "Fingers L")
+    b.prop(obj, "fingers_l", toggle=True, text = "左手手指")
     b = box1.row(align=True)
-    b.prop(obj, "thumbfill_R", text = "Thumbfill R",toggle=True)
-    b.prop(obj, "thumbfill_L", text = "Thumbfill L",toggle=True)
+    b.prop(obj, "thumbfill_R", text = "右手拇指填充",toggle=True)
+    b.prop(obj, "thumbfill_L", text = "左手拇指填充",toggle=True)
     b = box1.row(align=True)
-    b.prop(obj, "wrist_lock_r", toggle=True, text = "Wrist Lock R")
-    b.prop(obj, "wrist_lock_l", toggle=True, text = "Wrist Lock L")
+    b.prop(obj, "wrist_lock_r", toggle=True, text = "右手手腕锁定")
+    b.prop(obj, "wrist_lock_l", toggle=True, text = "左手手腕锁定")
     b = box1.row(align=True)
     b.prop(obj, "arm_ik_parent_r", text = "")
     b.prop(obj, "arm_ik_parent_l", text = "")
@@ -79,25 +79,25 @@ def general_settings_main_UI(self, context, layout, obj, icon):
     box1 = box.box()
     box1.label(text= "Legs", icon= 'FILE_CACHE')
     b = box1.row(align=True)
-    b.prop(obj, "r_leg_ik", toggle=True, text = "Right Leg IK")
-    b.prop(obj, "l_leg_ik", toggle=True, text = "Left Leg IK")
+    b.prop(obj, "r_leg_ik", toggle=True, text = "右腿IK")
+    b.prop(obj, "l_leg_ik", toggle=True, text = "左腿IK")
     b = box1.row(align=True)
-    b.prop(obj, "ankle_r", toggle=True, text = "Ankle R")
-    b.prop(obj, "ankle_l", toggle=True, text = "Ankle L")
+    b.prop(obj, "ankle_r", toggle=True, text = "右腿脚腕")
+    b.prop(obj, "ankle_l", toggle=True, text = "左腿脚腕")
     b = box1.row(align=True)
     if obj.get("r_leg_ik") == 1:
         stretchRL = b.row(align=True)
-        stretchRL.prop(obj, "stretch_leg_r", toggle=True, text = "Leg Stretch R")
+        stretchRL.prop(obj, "stretch_leg_r", toggle=True, text = "右腿拉伸")
     else:
         stretchRL = b.row(align=True)
-        stretchRL.prop(obj, "stretch_leg_r", toggle=True, text = "Leg Stretch R")
+        stretchRL.prop(obj, "stretch_leg_r", toggle=True, text = "右腿拉伸")
         stretchRL.enabled=False
     if obj.get("l_leg_ik") == 1:
         stretchLL = b.row(align=True)
-        stretchLL.prop(obj, "stretch_leg_l", toggle=True, text = "Leg Stretch L")
+        stretchLL.prop(obj, "stretch_leg_l", toggle=True, text = "左腿拉伸")
     else:
         stretchLL = b.row(align=True)
-        stretchLL.prop(obj, "stretch_leg_l", toggle=True, text = "Leg Stretch L")
+        stretchLL.prop(obj, "stretch_leg_l", toggle=True, text = "左腿拉伸")
         stretchLL.enabled=False
 
 classes = [

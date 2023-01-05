@@ -42,14 +42,14 @@ def RefreshRigList():
     return items
     
 bpy.types.Scene.selected_rig_preset = EnumProperty(
-        name = "Selected Pack",
+        name = "选中的包",
         items = [('NONE', 'REFRESH','REFRESH')]
         )
 
 #Classes
 class refresh_rigs_list(bpy.types.Operator):
     bl_idname = "refresh.rig_list"
-    bl_label = "refresh rig list"
+    bl_label = "刷新模型列表"
     bl_options = {'REGISTER', 'UNDO'}
     
     
@@ -72,7 +72,7 @@ class refresh_rigs_list(bpy.types.Operator):
         
         #Drawing the custom property
         bpy.types.Scene.selected_rig_preset = EnumProperty(
-        name = "Selected Rig",
+        name = "选中的模型",
         items = RefreshRigList()
         )
 
@@ -85,9 +85,9 @@ class refresh_rigs_list(bpy.types.Operator):
 
 
 class rig_baked_class(bpy.types.Operator): #A boolean that controls whether to use _NORMAL or _BAKED
-    """Changes whether the imported rig is baked or not"""
+    """修改已导入模型的烘焙状态"""
     bl_idname = "rig.bakedbutton"
-    bl_label = "Is the rig baked?"
+    bl_label = "模型是否已烘焙？"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -100,9 +100,9 @@ class rig_baked_class(bpy.types.Operator): #A boolean that controls whether to u
         return {'FINISHED'}
 
 class append_preset(bpy.types.Operator):
-    """Imports a preset or rig from your library"""
+    """从你的资产库中导入预设或模型"""
     bl_idname = "append.preset"
-    bl_label = "append preset"
+    bl_label = "导入预设"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -110,9 +110,9 @@ class append_preset(bpy.types.Operator):
         return{'FINISHED'}
 
 class append_defaultrig(bpy.types.Operator): #Appends the default version of the rig
-    """Appends the default rig into your scene"""
+    """向你的场景中追加默认模型"""
     bl_idname = "append.defaultrig"
-    bl_label = "Ice Cube [DEFAULT]"
+    bl_label = "Ice Cube [默认]"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -120,9 +120,9 @@ class append_defaultrig(bpy.types.Operator): #Appends the default version of the
         return{'FINISHED'}
 
 class parent_leftarm(bpy.types.Operator):
-    """Parents anything with the \"_LeftArmChild\" tag to the left arm"""
+    """将物体名后面添加\"_LeftArmChild\"后缀以设置左臂父级"""
     bl_idname = "parent.leftarm"
-    bl_label = "parent left arm"
+    bl_label = "左臂父级"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -130,9 +130,9 @@ class parent_leftarm(bpy.types.Operator):
         return{'FINISHED'}
 
 class parent_rightarm(bpy.types.Operator):
-    """Parents anything with the \"_RightArmChild\" tag to the right arm"""
+    """将物体名后面添加\"_RightArmChild\"后缀以设置右臂父级"""
     bl_idname = "parent.rightarm"
-    bl_label = "parent right arm"
+    bl_label = "右臂父级"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -140,9 +140,9 @@ class parent_rightarm(bpy.types.Operator):
         return{'FINISHED'}
 
 class parent_rightleg(bpy.types.Operator):
-    """Parents anything with the \"_RightLegChild\" tag to the right leg"""
+    """将物体名后面添加\"_RightLegChild\"后缀以设置右腿父级"""
     bl_idname = "parent.rightleg"
-    bl_label = "parent right leg"
+    bl_label = "右腿父级"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -150,9 +150,9 @@ class parent_rightleg(bpy.types.Operator):
         return{'FINISHED'}
     
 class parent_leftleg(bpy.types.Operator):
-    """Parents anything with the \"_LeftLegChild\" tag to the left leg"""
+    """将物体名后面添加\"_LeftLegChild\"后缀以设置左腿父级"""
     bl_idname = "parent.leftleg"
-    bl_label = "parent left leg"
+    bl_label = "左腿父级"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -160,9 +160,9 @@ class parent_leftleg(bpy.types.Operator):
         return{'FINISHED'}
         
 class parent_body(bpy.types.Operator):
-    """Parents anything with the \"_BodyChild\" tag to the body"""
+    """将物体名后面添加\"_BodyChild\"后缀以设置身体父级"""
     bl_idname = "parent.body"
-    bl_label = "parent body"
+    bl_label = "身体父级"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -170,9 +170,9 @@ class parent_body(bpy.types.Operator):
         return{'FINISHED'}
 
 class parent_head(bpy.types.Operator):
-    """Parents anything with the \"_HeadChild\" tag to the head"""
+    """将物体名后面添加\"_HeadChild\"后缀以设置头部父级"""
     bl_idname = "parent.head"
-    bl_label = "parent head"
+    bl_label = "头部父级"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -180,9 +180,9 @@ class parent_head(bpy.types.Operator):
         return{'FINISHED'}
     
 class lilocredits(bpy.types.Operator):
-    """Opens a link to my credits page"""
+    """打开作者的信息页面"""
     bl_idname = "lilocredits.link"
-    bl_label = "About the Creator"
+    bl_label = "关于作者"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -192,9 +192,9 @@ class lilocredits(bpy.types.Operator):
         return {'FINISHED'}
 
 class discord_link(bpy.types.Operator):
-    """Opens a link to my Discord server"""
+    """打开作者的Discord聊天服务器"""
     bl_idname = "discordserver.link"
-    bl_label = "Join the Discord!"
+    bl_label = "加入Discord聊天服务器！"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -204,9 +204,9 @@ class discord_link(bpy.types.Operator):
         return {'FINISHED'}
 
 class download_template_1(bpy.types.Operator):
-    """Downloads an asset template pack from my discord server"""
+    """从我的Discord服务器下载一个资产包模板"""
     bl_idname = "template1.download"
-    bl_label = "Download Asset Pack Template"
+    bl_label = "下载资产包模板"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -216,9 +216,9 @@ class download_template_1(bpy.types.Operator):
         return {'FINISHED'}
 
 class download_template_2(bpy.types.Operator):
-    """Downloads a rig template pack from my discord server"""
+    """下载一个模型包模板"""
     bl_idname = "template2.download"
-    bl_label = "Download Rig Pack Template"
+    bl_label = "下载模型包模板"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -228,7 +228,7 @@ class download_template_2(bpy.types.Operator):
         return {'FINISHED'}
 
 class open_wiki(bpy.types.Operator):
-    """Opens the Ice Cube wiki"""
+    """打开Ice Cube Wiki"""
     bl_idname = "wiki.open"
     bl_label = "Ice Cube Wiki"
     bl_options = {'REGISTER', 'UNDO'}
@@ -240,9 +240,9 @@ class open_wiki(bpy.types.Operator):
         return{'FINISHED'}
 
 class open_custom_presets(bpy.types.Operator):
-    """Opens the DLC folder"""
+    """打开DLC文件夹"""
     bl_idname = "custom_presets.open"
-    bl_label = "Open DLC Folder"
+    bl_label = "打开DLC文件夹"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -250,9 +250,9 @@ class open_custom_presets(bpy.types.Operator):
         return{'FINISHED'}
 
 class append_emotion_line(bpy.types.Operator):
-    """Appends an emotion line to the rig"""
+    """Appends an emotion line to the rig***向模型追加表情线"""
     bl_idname = "append.emotion"
-    bl_label = "Append Emotion Line"
+    bl_label = "Append Emotion Line***追加表情线"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -260,9 +260,9 @@ class append_emotion_line(bpy.types.Operator):
         return{'FINISHED'}
 
 class check_for_updates(bpy.types.Operator):
-    """Checks the Ice Cube GitHub for updates"""
+    """检查Ice Cube GitHub的更新"""
     bl_idname = "check.updates"
-    bl_label = "Check for updates"
+    bl_label = "检查更新"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -270,9 +270,9 @@ class check_for_updates(bpy.types.Operator):
         return{'FINISHED'}
 
 class install_update(bpy.types.Operator):
-    """Installs the latest version from GitHub"""
+    """从GitHub安装最新版本"""
     bl_idname = "install.update"
-    bl_label = "Install the latest update"
+    bl_label = "安装最新版本"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -280,9 +280,9 @@ class install_update(bpy.types.Operator):
         return{'FINISHED'}
 
 class open_update_page(bpy.types.Operator):
-    """Opens the Ice Cube website"""
+    """打开Ice Cube网站"""
     bl_idname = "open.update"
-    bl_label = "Open Ice Cube Website"
+    bl_label = "打开Ice Cube网站"
     bl_options = {'REGISTER', 'UNDO'}
 
 
@@ -293,9 +293,9 @@ class open_update_page(bpy.types.Operator):
         return{'FINISHED'}
 
 class create_backup(bpy.types.Operator):
-    """Creates a backup of the currently installed version"""
+    """创建当前安装版本的备份"""
     bl_idname = "create.backup"
-    bl_label = "Load Backup"
+    bl_label = "创建备份"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -303,9 +303,9 @@ class create_backup(bpy.types.Operator):
         return{'FINISHED'}
 
 class load_backup(bpy.types.Operator):
-    """Loads the selected backup from your backups folder"""
+    """从备份文件夹中读取选中的备份文件"""
     bl_idname = "load.backup"
-    bl_label = "Append Emotion Line"
+    bl_label = "读取备份"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -313,9 +313,9 @@ class load_backup(bpy.types.Operator):
         return{'FINISHED'}
     
 class delete_backup(bpy.types.Operator):
-    """Deletes the selected backup"""
+    """删除选中的备份"""
     bl_idname = "delete.backup"
-    bl_label = "Delete Backup"
+    bl_label = "删除备份"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -323,9 +323,9 @@ class delete_backup(bpy.types.Operator):
         return{'FINISHED'}
 
 class refresh_dlc(bpy.types.Operator):
-    """Checks the Ice Cube GitHub for new DLC"""
+    """检查Ice Cube GitHub的最新DLC"""
     bl_idname = "refresh.dlc"
-    bl_label = "Delete Backup"
+    bl_label = "更新DLC"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -338,9 +338,9 @@ class refresh_dlc(bpy.types.Operator):
         return{'FINISHED'}
 
 class download_dlc(bpy.types.Operator):
-    """Downloads the selected DLC from GitHub"""
+    """下载选中的DLC"""
     bl_idname = "download.dlc"
-    bl_label = "Download DLC"
+    bl_label = "下载DLC"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -348,9 +348,9 @@ class download_dlc(bpy.types.Operator):
         return{'FINISHED'}
 
 class export_settings_data_class(bpy.types.Operator):
-    """Exports the current rig settings"""
+    """导出当前模型的设置"""
     bl_idname = "export.settings"
-    bl_label = "Export Settings"
+    bl_label = "导出设置"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self,context):
@@ -358,9 +358,9 @@ class export_settings_data_class(bpy.types.Operator):
         return{'FINISHED'}
 
 class import_settings_data_class(bpy.types.Operator):
-    """Imports rig settings from the clipboard or a file"""
+    """从文件或剪贴板导入模型设置"""
     bl_idname = "import.settings"
-    bl_label = "Export Settings"
+    bl_label = "导入设置"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self,context):
@@ -368,9 +368,9 @@ class import_settings_data_class(bpy.types.Operator):
         return{'FINISHED'}
 
 class update_backups_list(bpy.types.Operator):
-    """Updates the list of current backups!"""
+    """更新当前列表的备份！"""
     bl_idname = "update.backups"
-    bl_label = "Update Backups"
+    bl_label = "更新备份"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self,context):
@@ -379,9 +379,9 @@ class update_backups_list(bpy.types.Operator):
         return{'FINISHED'}
 
 class reset_all_settings(bpy.types.Operator):
-    """Resets all the rig settings to default!"""
+    """重置模型的所有设置！"""
     bl_idname = "reset.settings"
-    bl_label = "Update Backups"
+    bl_label = "重置模型设置"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self,context):
@@ -389,9 +389,9 @@ class reset_all_settings(bpy.types.Operator):
         return{'FINISHED'}
 
 class generate_asset_pack(bpy.types.Operator):
-    """Generates an asset pack"""
+    """生成资产包"""
     bl_idname = "generate.asest_pack"
-    bl_label = "Generate Asset Pack"
+    bl_label = "生成资产包"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self,context):
@@ -445,19 +445,19 @@ class generate_asset_pack(bpy.types.Operator):
                     shutil.copyfile(obj.target_thumbnail_generate,f"{inventory}/{obj.asset_pack_name}/thumbnails/{obj.entry_name_asset}.png")
 
             elif obj.asset_pack_name == "":
-                CustomErrorBox("Please enter a name for the pack!",'Invalid Name','ERROR')
+                CustomErrorBox("请输入资产包的名称！",'无效的名称','ERROR')
                 return{'FINISHED'}
             elif obj.entry_name_asset == "":
-                CustomErrorBox("Please enter an asset name!","Invalid Name",'ERROR')
+                CustomErrorBox("请输入资产名称！","无效的名称",'ERROR')
                 return{'FINISHED'}
             elif obj.asset_author == "":
-                CustomErrorBox("Please enter an author!","Invalid Author",'ERROR')
+                CustomErrorBox("请输入作者名称！","无效的作者名称",'ERROR')
                 return{'FINISHED'}
             elif obj.asset_version == "":
-                CustomErrorBox("Please enter a valid version!","Invalid Version",'ERROR')
+                CustomErrorBox("请输入有效的版本号！","无效的版本号",'ERROR')
                 return{'FINISHED'}
             elif os.path.exists(obj.target_thumbnail_generate) is False:
-                CustomErrorBox("Please select a valid thumbnail!")
+                CustomErrorBox("请选择一个有效的缩略图！")
                 return{'FINISHED'}
 
         if obj.get("ipaneltab6") is 1:
@@ -465,11 +465,11 @@ class generate_asset_pack(bpy.types.Operator):
             if obj.asset_pack_name != "" and obj.entry_name_asset != "" and obj.asset_author != "" and obj.asset_version != "":
                 
                 if obj.has_baked_version is True and os.path.exists(obj.baked_version_filepath) is False:
-                    CustomErrorBox("Please enter a valid baked file path!",'Invalid Thumbnail','ERROR')
+                    CustomErrorBox("请输入一个有效的烘焙文件路径！",'无效的缩略图','ERROR')
                     return{'FINISHED'}
                 
                 if os.path.exists(obj.target_thumbnail_generate) is False and obj.generate_thumbnail is False:
-                    CustomErrorBox("Invalid Thumbnail Path!",'Invalid Thumbnail','ERROR')
+                    CustomErrorBox("无效的缩略图路径！",'无效的缩略图路径','ERROR')
                     return{'FINISHED'}
 
                 #folder generation
@@ -590,19 +590,19 @@ class generate_asset_pack(bpy.types.Operator):
                     
 
             elif obj.asset_pack_name == "":
-                CustomErrorBox("Please enter a name for the pack!",'Invalid Name','ERROR')
+                CustomErrorBox("请输入资产包的名称！",'无效的名称','ERROR')
                 return{'FINISHED'}
             elif obj.entry_name_asset == "":
-                CustomErrorBox("Please enter an asset name!","Invalid Name",'ERROR')
+                CustomErrorBox("请输入资产名称！","无效的名称",'ERROR')
                 return{'FINISHED'}
             elif obj.asset_author == "":
-                CustomErrorBox("Please enter an author!","Invalid Author",'ERROR')
+                CustomErrorBox("请输入作者名称！","无效的作者名",'ERROR')
                 return{'FINISHED'}
             elif obj.asset_version == "":
-                CustomErrorBox("Please enter a valid version!","Invalid Version",'ERROR')
+                CustomErrorBox("请输入有效的版本号！","无效的版本号",'ERROR')
                 return{'FINISHED'}
             elif os.path.exists(obj.target_thumbnail_generate) is False and obj.generate_thumbnail is False:
-                CustomErrorBox("Please select a valid thumbnail!")
+                CustomErrorBox("请选择一个有效的缩略图！","无效的缩略图",'ERROR')
                 return{'FINISHED'}
 
         return{'FINISHED'}

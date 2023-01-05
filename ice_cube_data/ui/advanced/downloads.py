@@ -43,7 +43,7 @@ def downloads_UI(self, context, layout, obj):
     box = layout.box()
     if platform == "darwin":
         b = box.row(align=True)
-        b.label(text= "DOWNLOAD PANEL NOT SUPPORTED ON MAC OS!", icon='ERROR')
+        b.label(text= "MacOS中无法使用下载面板！", icon='ERROR')
     else:
         virtual_ice_cube = root_folder+""
         virtual_ice_cube = os.path.normpath(virtual_ice_cube)
@@ -51,22 +51,22 @@ def downloads_UI(self, context, layout, obj):
             pass
         else:
             os.mkdir(backups_folder)
-            print("Created Backups Folder")
+            print("创建备份文件夹")
 
         b = box.row(align=True)
-        b.label(text= "Update Manager", icon='FILE_REFRESH')
+        b.label(text= "更新管理器", icon='FILE_REFRESH')
         b = box.row(align=True)
-        b.label(text="Do NOT close Blender while installing")
+        b.label(text="在安装时不要关闭Blender！")
         b = box.row(align=True)
         if ice_cube.update_available == True:
-            b.operator("install.update", text="Install Update", icon='MOD_WAVE')
+            b.operator("install.update", text="安装更新", icon='MOD_WAVE')
         else:
-            b.operator("check.updates", text="Check for Updates", icon='IMPORT')
+            b.operator("check.updates", text="检查更新", icon='IMPORT')
         box = layout.box()
         b = box.row(align=True)
-        b.label(text = "Backup Manager", icon='FILE_BACKUP')
+        b.label(text = "备份管理器", icon='FILE_BACKUP')
         b = box.row(align=True)
-        b.prop(obj, "backup_name", text="Backup Name", icon='FILE_BACKUP')
+        b.prop(obj, "backup_name", text="备份名称", icon='FILE_BACKUP')
         b = box.row(align=True)
         if len(backup_folder_scan) >= 1:
             b.prop(obj, "backups_list",text="")
@@ -76,21 +76,21 @@ def downloads_UI(self, context, layout, obj):
         if len(backup_folder_scan) >= 1:
             bload = b.row(align=True)
             bdelete = b.row(align=True)
-        bcreate.operator("create.backup", text="Create Backup")
+        bcreate.operator("create.backup", text="创建备份")
         if len(backup_folder_scan) >= 1:
-            bload.operator("load.backup", text="Load Backup")
-            bdelete.operator("delete.backup", text="Delete Backup")
+            bload.operator("load.backup", text="读取备份")
+            bdelete.operator("delete.backup", text="删除备份")
         b = box.row(align=True)
         if len(backup_folder_scan) >= 1:
             box = b.box()
             b1 = box.row(align=True)
-            b1.label(text = "Selected Backup:")
+            b1.label(text = "选择备份：")
             selected_backup = getattr(obj,"backups_list")
             creation_date = pathlib.Path(f"{backups_folder}/{selected_backup}").stat().st_mtime
             creation_date = str(datetime.datetime.fromtimestamp(creation_date)).split(" ")[0]
             b1 = box.row(align=True)
             b1.label(text = selected_backup, icon = 'FILE_BACKUP')
-            b1.label(text = f"Created:  [{creation_date}]")
+            b1.label(text = f"已创建： [{creation_date}]")
 
 
 

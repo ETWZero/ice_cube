@@ -6,13 +6,13 @@ def parenting_UI(self, context, layout, rig_baked):
     obj = context.object
                 
     b = box.row(align=True)
-    b.operator("parent.head", text="Parent Head")
+    b.operator("parent.head", text="头部父级")
     b = box.row(align=True)
     if obj.get("Body_Bend_Half") == True:
         b.prop(obj, "Body_Bend_Half", text="",icon='SORT_ASC')
     else:
         b.prop(obj, "Body_Bend_Half", text="",icon='SORT_DESC')
-    b.operator("parent.body", text="Parent Body")
+    b.operator("parent.body", text="身体父级")
     if obj.get("Body_Bend_Half") == True:
         b.prop(obj, "Body_Bend_Half", text="",icon='SORT_ASC')
     else:
@@ -24,8 +24,8 @@ def parenting_UI(self, context, layout, rig_baked):
     else:
         b.prop(obj, "R_A_Half", text="",icon='SORT_DESC')
 
-    b.operator("parent.rightarm", text="Parent Right Arm")
-    b.operator("parent.leftarm", text="Parent Left Arm")
+    b.operator("parent.rightarm", text="右臂父级")
+    b.operator("parent.leftarm", text="左臂父级")
 
     if obj.get("L_A_Half") == True:
         b.prop(obj, "L_A_Half", text="",icon='SORT_ASC')
@@ -37,8 +37,8 @@ def parenting_UI(self, context, layout, rig_baked):
         b.prop(obj, "R_L_Half", text="",icon='SORT_ASC')
     else:
         b.prop(obj, "R_L_Half", text="",icon='SORT_DESC')
-    b.operator("parent.rightleg", text="Parent Right Leg")
-    b.operator("parent.leftleg", text="Parent Left Leg")
+    b.operator("parent.rightleg", text="右腿父级")
+    b.operator("parent.leftleg", text="左腿父级")
 
     if obj.get("L_L_Half") == True:
         b.prop(obj, "L_L_Half", text="",icon='SORT_ASC')
@@ -47,34 +47,36 @@ def parenting_UI(self, context, layout, rig_baked):
 
     
     box = layout.box()
-    box.label(text= "IMPORTANT", icon= 'HELP')
+    box.label(text= "重要信息", icon= 'HELP')
     b = box.row(align=True)
     b = box.row(align=True)
-    b.label(text= "To parent something to the rig with all features")
+    ###
+    b.label(text= "为了确保对模型添加父级关系时能继承所有特性，")
     b = box.row(align=True)
-    b.label(text= "inherited, add the correct suffix to the end")
+    b.label(text= "请在物体后面添加合适的后缀，之后点击相应的按钮。")
     b = box.row(align=True)
-    b.label(text= "of their name then click the corresponding button.")
+    ###
     b = box.row(align=True)
+    b.label(text= "Head Suffix头部后缀: \"_HeadChild\"", icon= 'OUTLINER_OB_ARMATURE')
     b = box.row(align=True)
-    b.label(text= "Head Suffix: \"_HeadChild\"", icon= 'OUTLINER_OB_ARMATURE')
+    b.label(text= "Body Suffix身体后缀: \"_BodyChild\"", icon= 'OUTLINER_OB_ARMATURE')
     b = box.row(align=True)
-    b.label(text= "Body Suffix: \"_BodyChild\"", icon= 'OUTLINER_OB_ARMATURE')
+    b.label(text= "Right Arm Suffix右臂后缀: \"_RightArmChild\"", icon= 'OUTLINER_OB_ARMATURE')
     b = box.row(align=True)
-    b.label(text= "Right Arm Suffix: \"_RightArmChild\"", icon= 'OUTLINER_OB_ARMATURE')
+    b.label(text= "Left Arm Suffix左臂后缀: \"_LeftArmChild\"", icon= 'OUTLINER_OB_ARMATURE')
     b = box.row(align=True)
-    b.label(text= "Left Arm Suffix: \"_LeftArmChild\"", icon= 'OUTLINER_OB_ARMATURE')
+    b.label(text= "Right Leg Suffix右腿后缀: \"_RightLegChild\"", icon= 'OUTLINER_OB_ARMATURE')
     b = box.row(align=True)
-    b.label(text= "Right Leg Suffix: \"_RightLegChild\"", icon= 'OUTLINER_OB_ARMATURE')
+    b.label(text= "Left Leg Suffix左腿后缀: \"_LeftLegChild\"", icon= 'OUTLINER_OB_ARMATURE')
     b = box.row(align=True)
-    b.label(text= "Left Leg Suffix: \"_LeftLegChild\"", icon= 'OUTLINER_OB_ARMATURE')
+    ###
     b = box.row(align=True)
+    b.label(text= "如果你需要忽略掉特定肢体的弯曲，")
     b = box.row(align=True)
-    b.label(text= "If you want to have a certain part ignore bends,")
+    b.label(text="只需要在上面的后缀后面添加\"_IgnoreBend\"后缀，")
     b = box.row(align=True)
-    b.label(text="just add the \"_IgnoreBend\" after the previous")
-    b = box.row(align=True)
-    b.label(text="suffix and make sure to chose an upper or lower parent.")
+    b.label(text="同时确保已经选择上方还是下方的父级。")
+    ###
 
 classes = [
            ]

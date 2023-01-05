@@ -73,43 +73,43 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                 asset_json_asset_version = str(asset_infodata['asset_version'])
 
                 b = box.row(align=True)
-                b.label(text= "Select an asset to append!", icon='BLENDER')
+                b.label(text= "选择资产导入", icon='BLENDER')
                 b = box.row(align=True)
                 b.template_icon_view(wm, "inventory_preview")
                 b = box.row(align=True)
                 b.prop(scene, "selected_inv_asset",text="")
                 b.operator("refresh.inv_list",text="",icon='FILE_REFRESH')
                 b = box.row(align=True)
-                b.operator("append.asset", text = "Append Selected")
+                b.operator("append.asset", text = "追加选择项")
                 b = box.row(align=True)
-                b.operator("custom_presets.open", text = "DLC Folder")
-                b.operator("template1.download", text = "Asset Template")
+                b.operator("custom_presets.open", text = "DLC文件夹")
+                b.operator("template1.download", text = "资产模板")
 
                 box = layout.box()
                 b = box.row(align=True)
-                b.label(text="Asset Pack Info:", icon='INFO')
+                b.label(text="资产包信息：", icon='INFO')
                 try:
                     row_labels = {
-                                   "Pack Name": asset_json_pack_name,
-                                   "Author": asset_json_pack_author,
-                                   "Version": asset_json_pack_version
+                                   "资产包名称": asset_json_pack_name,
+                                   "作者": asset_json_pack_author,
+                                   "版本": asset_json_pack_version
                                 }
                     for label in row_labels:
                         b = box.row(align = True)
                         b.label(text = f"{label}: {row_labels[label]}")
                 except:
-                    b.label(text = "Select a pack from the list")
+                    b.label(text = "从列表中选择资产包")
 
                 box = layout.box()
                 b = box.row(align=True)
-                b.label(text="Current Asset Info:", icon='INFO')
+                b.label(text="当前资产信息：", icon='INFO')
                 b = box.row(align=True)
                 b = box.row(align=True)
-                b.label(text="Name: " + asset_json_asset_name)
+                b.label(text="名称：" + asset_json_asset_name)
                 b = box.row(align=True)
-                b.label(text="Author: " + asset_json_asset_author)
+                b.label(text="作者：" + asset_json_asset_author)
                 b = box.row(align=True)
-                b.label(text="Version: " + asset_json_asset_version)
+                b.label(text="版本：" + asset_json_asset_version)
 
             if obj.get("ipaneltab6") is 1:
                 thumbnail = bpy.data.window_managers["WinMan"].my_previews_presets
@@ -160,21 +160,21 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                 json_rig_baked = str(infodata['has_baked'])
 
                 b = box.row(align=True)
-                b.label(text= "Select a preset to append!", icon='BLENDER')
+                b.label(text= "选择预设以追加！", icon='BLENDER')
                 b = box.row(align=True)
                 b.template_icon_view(wm, "my_previews_presets")
                 b = box.row(align=True)
                 b.prop(scene, "selected_rig_preset",text="")
                 b.operator("refresh.rig_list",text="",icon='FILE_REFRESH')
                 b = box.row(align=True)
-                b.operator("append.preset", text = "Append Selected")
+                b.operator("append.preset", text = "追加所选项")
                 b1 = b.row(align=True)
                 if rig_baked == True:
-                    b1.operator("rig.bakedbutton", text= "Baked", icon= 'LAYER_ACTIVE')
+                    b1.operator("rig.bakedbutton", text= "已烘焙", icon= 'LAYER_ACTIVE')
                     if json_rig_baked == "False":
                         rig_baked = False
                 else:
-                    b1.operator("rig.bakedbutton", text= "Normal", icon= 'LAYER_USED')
+                    b1.operator("rig.bakedbutton", text= "普通", icon= 'LAYER_USED')
                 if json_rig_baked == "True":
                     b1.enabled = True
                 else:
@@ -182,39 +182,39 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                     if properties.global_rig_baked == True:
                         properties.global_rig_baked = False
                 b = box.row(align=True)
-                b.operator("custom_presets.open", text = "DLC Folder")
-                b.operator("template2.download", text = "Rig Template")
+                b.operator("custom_presets.open", text = "DLC文件夹")
+                b.operator("template2.download", text = "模型包模板")
                 box = layout.box()
                 b = box.row(align=True)
-                b.label(text="Rig Pack Info:", icon='INFO')
+                b.label(text="模型包信息：", icon='INFO')
                 try:
                     row_labels = {
-                                   "Pack Name": json_pack_name,
-                                   "Author": json_pack_author,
-                                   "Version": json_pack_version
+                                   "模型包名称": json_pack_name,
+                                   "作者": json_pack_author,
+                                   "版本": json_pack_version
                                 }
                     for label in row_labels:
                         b = box.row(align = True)
                         b.label(text = f"{label}: {row_labels[label]}")
                 except:
-                    b.label(text = "No Pack Selected!")
+                    b.label(text = "尚未选中任何模型包！")
 
                 box = layout.box()
                 b = box.row(align=True)
-                b.label(text="Current Rig Info:", icon='INFO')
+                b.label(text="当前模型信息：", icon='INFO')
                 b = box.row(align=True)
                 b = box.row(align=True)
-                b.label(text="Name: " + json_rig_name)
+                b.label(text="名称：" + json_rig_name)
                 b = box.row(align=True)
-                b.label(text="Author: " + json_rig_author)
+                b.label(text="作者：" + json_rig_author)
                 b = box.row(align=True)
-                b.label(text="Version: " + json_rig_version)
+                b.label(text="版本：" + json_rig_version)
                 b = box.row(align=True)
-                b.label(text="Base Rig: " + json_base_rig)
+                b.label(text="基础模型：" + json_base_rig)
                 b = box.row(align=True)
-                b.label(text="Base Rig Version: " + json_base_version)
+                b.label(text="基础模型版本：" + json_base_version)
                 b = box.row(align=True)
-                b.label(text="Has \"BAKED\" version?: " + json_rig_baked)
+                b.label(text="是否为“已烘焙”的版本？" + json_rig_baked)
 
         if obj.get("dlc_menu_switcher") is 1: #DOWNLOAD MENU
             dlc_folder_preset = root_folder+"/ice_cube_data/internal_files/user_packs/rigs"
@@ -222,7 +222,7 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
 
             box = layout.box()
             b = box.row(align=True)
-            b.label(text = "DLC Manager",icon='IMPORT')
+            b.label(text = "DLC管理器",icon='IMPORT')
             b = box.row(align=True)
 
             b.prop(obj,"dlc_list",text="")
@@ -234,9 +234,9 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
             box2 = b.box()
             b1 = box2.row(align=True)
 
-            b1.label(text="Type:", icon ='FILE_BACKUP')
-            b1.label(text="Author:")
-            b1.label(text="Date:")
+            b1.label(text="类型：", icon ='FILE_BACKUP')
+            b1.label(text="作者：")
+            b1.label(text="日期：")
             b1 = box2.row(align=True)
             try:
                 selected_dlc = getattr(obj,"dlc_list")
@@ -251,7 +251,7 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                 b1 = box2.row(align=True)
 
             b = box.row(align=True)
-            b.label(text = "Installed DLC:")
+            b.label(text = "已安装的DLC：")
             b = box.row(align=True)
             #start of box
             box2 = b.box()
@@ -260,7 +260,7 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
             dlc_asset_scan = os.listdir(dlc_folder_asset)
             if len(dlc_preset_scan) + len(dlc_asset_scan) == 0:
                 b1 = box2.row(align=True)
-                b1.label(text = "NO DLC FOUND", icon = 'FILE_BACKUP')
+                b1.label(text = "尚未发现任何DLC", icon = 'FILE_BACKUP')
             else:
                 for dlc in getFiles(dlc_folder_asset):
                     b1 = box2.row(align=True)
@@ -274,12 +274,12 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
             b = box.row(align=True)
 
             if obj.get("ipaneltab6") is 0: #ASSETS
-                b.label(text="Generate Asset Pack")
+                b.label(text="生成资产包")
                 b1 = b.row(align=True)
-                b1.prop(obj,"generate_thumbnail",text="Generate Thumbnail?")
+                b1.prop(obj,"generate_thumbnail",text="生成缩略图？")
                 b1.enabled = False
                 b = box.row(align=True)
-                b.prop(obj, "target_thumbnail_generate", text="Thumbnail")
+                b.prop(obj, "target_thumbnail_generate", text="缩略图")
                 b = box.row(align=True)
                 b.prop(obj, "asset_pack_name", text="")
                 b.prop(obj, "entry_name_asset", text="")
@@ -287,17 +287,17 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                 b.prop(obj, "asset_author", text="")
                 b.prop(obj, "asset_version", text="")
                 b = box.row(align=True)
-                b.operator("generate.asest_pack",text="Generate Pack")
+                b.operator("generate.asest_pack",text="生成资产包")
 
             if obj.get("ipaneltab6") is 1: #PRESETS
-                b.label(text="Generate Preset Pack")
-                b.prop(obj,"generate_thumbnail",text="Generate Thumbnail?")
+                b.label(text="生成预设包")
+                b.prop(obj,"generate_thumbnail",text="生成缩略图？")
                 b1 = box.row(align=True)
-                b1.prop(obj, "target_thumbnail_generate", text="Thumbnail")
+                b1.prop(obj, "target_thumbnail_generate", text="缩略图")
                 if obj.get("generate_thumbnail") == True:
                     b1.enabled = False
                 b = box.row(align=True)
-                b.prop(obj, "has_baked_version", text="Has Baked?")
+                b.prop(obj, "has_baked_version", text="是否已经烘焙过？")
                 b1 = b.row(align=True)
                 b1.prop(obj,"baked_version_filepath",text="")
                 if obj.get("has_baked_version") == False:
@@ -309,7 +309,7 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                 b.prop(obj, "asset_author", text="")
                 b.prop(obj, "asset_version", text="")
                 b = box.row(align=True)
-                b.operator("generate.asest_pack",text="Generate Pack")
+                b.operator("generate.asest_pack",text="生成预设包")
 
     elif main_menu is False:
         box = layout.box()
@@ -364,21 +364,21 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
         json_rig_baked = str(infodata['has_baked'])
 
         b = box.row(align=True)
-        b.label(text= "Select a preset to append!", icon='BLENDER')
+        b.label(text= "选择一个预设以追加！", icon='BLENDER')
         b = box.row(align=True)
         b.template_icon_view(wm, "my_previews_presets")
         b = box.row(align=True)
         b.prop(scene, "selected_rig_preset",text="")
         b.operator("refresh.rig_list",text="",icon='FILE_REFRESH')
         b = box.row(align=True)
-        b.operator("append.preset", text = "Append Selected")
+        b.operator("append.preset", text = "追加选择项")
         b1 = b.row(align=True)
         if rig_baked == True:
-            b1.operator("rig.bakedbutton", text= "Baked", icon= 'LAYER_ACTIVE')
+            b1.operator("rig.bakedbutton", text= "已烘焙", icon= 'LAYER_ACTIVE')
             if json_rig_baked == "False":
                 rig_baked = False
         else:
-            b1.operator("rig.bakedbutton", text= "Normal", icon= 'LAYER_USED')
+            b1.operator("rig.bakedbutton", text= "默认", icon= 'LAYER_USED')
         if json_rig_baked == "True":
             b1.enabled = True
         else:
@@ -386,39 +386,39 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
             if properties.global_rig_baked == True:
                 properties.global_rig_baked = False
         b = box.row(align=True)
-        b.operator("custom_presets.open", text = "DLC Folder")
-        b.operator("template2.download", text = "Rig Template")
+        b.operator("custom_presets.open", text = "DLC 文件夹")
+        b.operator("template2.download", text = "模型模板")
         box = layout.box()
         b = box.row(align=True)
-        b.label(text="Rig Pack Info:", icon='INFO')
+        b.label(text="Rig Pack Info:模型包信息：", icon='INFO')
         try:
             row_labels = {
-                           "Pack Name": json_pack_name,
-                           "Author": json_pack_author,
-                           "Version": json_pack_version
+                           "模型名称": json_pack_name,
+                           "作者": json_pack_author,
+                           "版本": json_pack_version
                         }
             for label in row_labels:
                 b = box.row(align = True)
                 b.label(text = f"{label}: {row_labels[label]}")
         except:
-            b.label(text = "No Pack Selected!")
+            b.label(text = "尚未选择任何模型包！")
 
         box = layout.box()
         b = box.row(align=True)
-        b.label(text="Current Rig Info:", icon='INFO')
+        b.label(text="当前模型信息：", icon='INFO')
         b = box.row(align=True)
         b = box.row(align=True)
-        b.label(text="Name: " + json_rig_name)
+        b.label(text="名称：" + json_rig_name)
         b = box.row(align=True)
-        b.label(text="Author: " + json_rig_author)
+        b.label(text="作者：" + json_rig_author)
         b = box.row(align=True)
-        b.label(text="Version: " + json_rig_version)
+        b.label(text="版本：" + json_rig_version)
         b = box.row(align=True)
-        b.label(text="Base Rig: " + json_base_rig)
+        b.label(text="基础模型：" + json_base_rig)
         b = box.row(align=True)
-        b.label(text="Base Rig Version: " + json_base_version)
+        b.label(text="基础模型版本：" + json_base_version)
         b = box.row(align=True)
-        b.label(text="Has \"BAKED\" version?: " + json_rig_baked)
+        b.label(text="是否为“已烘焙”的版本？" + json_rig_baked)
 
 classes = [
            ]

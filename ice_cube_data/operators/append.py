@@ -38,7 +38,7 @@ def append_preset_func(self, context, rig_baked):
                     elif (file.__contains__('NORMAL')):
                         normals[dir] = newFile;
         except:
-            CustomErrorBox(message="Unknown Error", title="Append Exception", icon='ERROR')
+            CustomErrorBox(message="未知错误", title="追加异常", icon='ERROR')
         
         thumbnailnopngmis = bpy.data.window_managers["WinMan"].my_previews_presets.split(".")[0]
 
@@ -51,13 +51,13 @@ def append_preset_func(self, context, rig_baked):
                     return normals[thumbnail];
             except KeyError:
                 if rig_baked == True:
-                    CustomErrorBox("Missing \'BAKED\' file.","Append Exception",'ERROR')
+                    CustomErrorBox("缺少“烘焙”文件。","追加异常",'ERROR')
                 elif rig_baked == False:
-                    CustomErrorBox("Missing \'NORMAL\' file.", "Append Exception", 'ERROR')
+                    CustomErrorBox("缺少“一般”文件", "追加异常", 'ERROR')
                 elif():
-                    CustomErrorBox(message="Couldn't find file or folder for \""+thumbnailnopngmis+"\" from \""+selected_file+"\"", title="Append Exception", icon='ERROR')
+                    CustomErrorBox(message="无法从"+selected_file+"中找到文件或文件夹以添加"+thumbnailnopngmis, title="追加异常", icon='ERROR')
             except:
-                CustomErrorBox("Unknown Error" "Append Exception", 'ERROR')
+                CustomErrorBox("未知错误" "追加异常", 'ERROR')
 
         #sets up appending variables
         thumbnail = bpy.data.window_managers["WinMan"].my_previews_presets
@@ -79,11 +79,11 @@ def append_preset_func(self, context, rig_baked):
             directory = os.path.join(blendfile,section)
             filename  = obj
             bpy.ops.wm.append(filepath=filepath,filename=filename,directory=directory,link=False,active_collection=True)
-            CustomErrorBox("Appended \""+thumbnailnopng+"\" from \""+blendfile_name+"\" in \""+selected_file+"\"", "Operation Completed", 'CHECKMARK')
+            CustomErrorBox("从“"+blendfile_name+"”中的“"+selected_file+"”文件中导入了“"+thumbnailnopng+"”", "操作完成", 'CHECKMARK')
         except RuntimeError:
-            CustomErrorBox("Please delete any \".blend1\" files from the directory!", "Directory Error", 'ERROR')
+            CustomErrorBox("请将路径中所有“.blend1”文件全部删除！", "路径错误", 'ERROR')
         except:
-            CustomErrorBox("An unknown error has occured.", "Unknown Error", 'ERROR')
+            CustomErrorBox("产生了一个未知的错误。", "未知错误", 'ERROR')
 
         return{'FINISHED'}
 
