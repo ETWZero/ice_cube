@@ -11,9 +11,9 @@ def customization_general_UI(self, context, layout, obj):
         b.prop(obj, "eyelashes", icon = "LAYER_ACTIVE", text = "睫毛")
     b = box.row(align=True)
     if obj.get("jaw") == 0:
-        b.prop(obj, "jaw", icon = "RIGHTARROW", text = "下巴")
+        b.prop(obj, "jaw", icon = "RIGHTARROW", text = "下颌")
     else:
-        b.prop(obj, "jaw", icon = "DOWNARROW_HLT", text = "下巴设置")
+        b.prop(obj, "jaw", icon = "DOWNARROW_HLT", text = "下颌设置")
         if obj.get("round_jaw") == 0:
             b.prop(obj, "round_jaw", icon = "LAYER_USED", text = "平展")
         else:

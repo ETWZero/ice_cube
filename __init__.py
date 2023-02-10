@@ -4,7 +4,7 @@ bl_info ={
     "version": (1, 4, 6),
     "blender": (3, 0, 0),
     "location": "View3D > Tool",
-    "description": "The official python panel for Ice Cube!",
+    "description": "Ice Cube人物模型的汉化设置面板Python程序！——修改自官方版本。",
     "tracker_url": "https://discord.gg/3G44QQM",
     "category": "Lilo's Rigs",
 }

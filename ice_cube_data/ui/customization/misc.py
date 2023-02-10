@@ -3,7 +3,7 @@ import bpy
 
 def custom_misc_UI(self, context, layout, obj):
     box = layout.box()
-    box.label(text= "WIP MISC尚未完工的杂项", icon= 'COLLAPSEMENU')
+    box.label(text= "WIP MISC 尚未完工的杂项", icon= 'COLLAPSEMENU')
     box.label(text= "WARNING: ALL FEATURES HERE ARE EXPERIMENTAL ", icon= 'ERROR')
     box.label(text= "AND MAY CAUSE PROBLEMS!", icon= 'ERROR')
     box.label(text= "警告：所有在此处的特性均为测试性质", icon= 'ERROR')

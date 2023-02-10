@@ -4,9 +4,9 @@ from sys import platform
 
 def skin_material_UI(self, context, layout, skin_mat, face):
     box = layout.box()
-    box.label(text= "Skin Texture", icon= 'IMAGE_DATA')
+    box.label(text= "皮肤材质", icon= 'IMAGE_DATA')
     b = box.row(align=True)
-    b.label(text= "Username:")
+    b.label(text= "用户名: ")
     b = box.row(align=True)
     if platform == "darwin":
         b2 = b.row(align=True)
@@ -20,7 +20,7 @@ def skin_material_UI(self, context, layout, skin_mat, face):
         b2.enabled = True
     b = box.row(align=True)
     b = box.row(align=True)
-    b.label(text= "Texture Path:")
+    b.label(text= "材质路径: ")
     b = box.row(align=True)
     b.context_pointer_set("edit_image",skin_mat.image)
     b.operator("image.unpack" if skin_mat.image.packed_file else "image.pack",

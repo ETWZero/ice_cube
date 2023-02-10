@@ -195,7 +195,7 @@ class IC_Panel(bpy.types.Panel):
         #tab switcher
         box = layout.box() #UNCOMMENTING WILL DRAW BOX
         b = box.row(align=True)
-        b.label(text= "Settings Tab", icon= 'EVENT_TAB')
+        b.label(text= "设置选项卡", icon= 'EVENT_TAB')
         b = box.row(align=True)
         b.prop(obj, "ipaneltab1", text = "the funny", expand=True)
         b = box.row(align=True)
@@ -242,7 +242,7 @@ def menu_function_thing(self, context):
     self.layout.menu("IceCubeAppendMenu", text = "Ice Cube Rig", icon_value = my_icon.icon_id)
 
 class IceCubeAppendMenu(bpy.types.Menu):
-        bl_label = "Append Rig"
+        bl_label = "追加模型"
         bl_idname = "IceCubeAppendMenu"
         bl_options = bl_options = {'REGISTER', 'UNDO'}
         
@@ -256,7 +256,7 @@ class IceCubeAppendMenu(bpy.types.Menu):
             layout.operator("append.defaultrig", icon_value = my_icon.icon_id)
 
 class ToolsAppendMenu(bpy.types.Panel):
-    bl_label = "Append Preset"
+    bl_label = "追加预设"
     bl_idname = "ToolsAppendIceCube"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'

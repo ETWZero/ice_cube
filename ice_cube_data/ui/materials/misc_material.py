@@ -3,9 +3,9 @@ import bpy
 
 def misc_material_UI(self, context, layout, face):
     box = layout.box()
-    box.label(text= "Misc Materials", icon= 'MATERIAL')
+    box.label(text= "杂项材质", icon= 'MATERIAL')
     b = box.row(align=True)
-    box.label(text= "Eyewhites")
+    box.label(text= "眼白")
     b = box.column(align=True)
     b1 = b.row(align=True)
     b1.prop(face.material_slots[10].material.node_tree.nodes['Principled BSDF'].inputs[0], 'default_value', text="", slider=True)
@@ -17,7 +17,7 @@ def misc_material_UI(self, context, layout, face):
     b1.prop(face.material_slots[2].material.node_tree.nodes['Principled BSDF'].inputs[7], 'default_value', text="Specular", slider=True)
     b1.prop(face.material_slots[2].material.node_tree.nodes['Principled BSDF'].inputs[9], 'default_value', text="Roughness", slider=True)
     b = box.row(align=True)
-    box.label(text= "Eyebrows")
+    box.label(text= "眉毛")
     b = box.column(align=True)
     b1 = b.row(align=True)
     b1.prop(face.material_slots[14].material.node_tree.nodes['Principled BSDF'].inputs[0], 'default_value', text="", slider=True)

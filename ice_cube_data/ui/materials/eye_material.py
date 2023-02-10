@@ -5,10 +5,10 @@ def eye_mat_UI(self, context, face):
     layout = self.layout
     obj = context.object
     box = layout.box()
-    box.label(text= "Eye Materials", icon= 'NODETREE')
+    box.label(text= "眼睛材质", icon= 'NODETREE')
     box1 = box.box()
     b = box1.row(align=True)
-    b.label(text= "Iris Settings", icon= 'NODE_MATERIAL')
+    b.label(text= "虹膜设置", icon= 'NODE_MATERIAL')
     b = box1.row(align=True)
     b = b.column(align=True)
 
@@ -27,11 +27,11 @@ def eye_mat_UI(self, context, face):
 
     if obj.get("togglegradient") == True:
         boxlayout = box1.box().column(align=True)
-        boxlayout.label(text= "Right Eye Gradient", icon= 'MATERIAL_DATA')
+        boxlayout.label(text= "右眼渐变", icon= 'MATERIAL_DATA')
         reg1 = face.material_slots[1].material.node_tree.nodes['Gradient Right']
         boxlayout.template_color_ramp(reg1, "color_ramp", expand=True)
         boxlayout = box1.box().column(align=True)
-        boxlayout.label(text= "Left Eye Gradient", icon= 'MATERIAL_DATA')
+        boxlayout.label(text= "左眼渐变", icon= 'MATERIAL_DATA')
         leg1 = face.material_slots[1].material.node_tree.nodes['Gradient Left']
         boxlayout.template_color_ramp(leg1, "color_ramp", expand=True)
     
@@ -54,7 +54,7 @@ def eye_mat_UI(self, context, face):
     #Pupil Settings
     box1 = box.box()
     b = box1.row(align=True)
-    b.label(text= "Pupil Settings", icon= 'NODE_MATERIAL')
+    b.label(text= "瞳孔设置", icon= 'NODE_MATERIAL')
     b = box1.row(align=True)
     b.prop(obj, "togglepupil", toggle=True, text = "Toggle Pupil")
     if obj.get("togglepupil") == True:
@@ -73,7 +73,7 @@ def eye_mat_UI(self, context, face):
     #Sparkle Settings
     box1 = box.box()
     b = box1.row(align=True)
-    b.label(text= "Sparkle Settings", icon= 'NODE_MATERIAL')
+    b.label(text= "高光设置", icon= 'NODE_MATERIAL')
     b = box1.row(align=True)
     b.prop(obj, "togglesparkle1", toggle = True, text = "Toggle Sparkle 1")
     b.prop(obj, "togglesparkle2", toggle = True, text = "Toggle Sparkle 2")

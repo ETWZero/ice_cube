@@ -119,7 +119,7 @@ def custom_mesh_UI(self, context, layout, obj):
         b.prop(obj, "eyebrowtaper1", text = "眉毛锥化参数1")
         b.prop(obj, "eyebrowtaper2", text = "眉毛锥化参数2")
     box1 = box.box()
-    box1.label(text= "Face", icon= 'CAMERA_STEREO')
+    box1.label(text= "面部", icon= 'CAMERA_STEREO')
     b = box1.row(align=True)
     b.prop(obj, "eyedepth", text = "眼睛深度")
     b = box1.row(align=True)

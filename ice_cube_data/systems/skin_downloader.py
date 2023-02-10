@@ -15,7 +15,7 @@ from ice_cube_data.utils.general_func import isOldSkin
 #Downloads a skin based on a username
 class skin_downloader(bpy.types.Operator):
     bl_idname = "skin.download"
-    bl_label = "skin downloader"
+    bl_label = "皮肤下载器"
     bl_options = {'REGISTER', 'UNDO'}
 
 

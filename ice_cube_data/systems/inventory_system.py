@@ -29,7 +29,7 @@ bpy.types.Scene.selected_inv_asset = EnumProperty(
 #Gets a list of assets in the "inventory" folder
 class refresh_inventory_list(bpy.types.Operator):
     bl_idname = "refresh.inv_list"
-    bl_label = "refresh inv list"
+    bl_label = "刷新背包列表"
     bl_options = {'REGISTER', 'UNDO'}
     
     
@@ -66,7 +66,7 @@ class refresh_inventory_list(bpy.types.Operator):
 #Append Asset Class
 class append_asset(bpy.types.Operator):
     bl_idname = "append.asset"
-    bl_label = "append asset"
+    bl_label = "追加资产"
     bl_options = {'REGISTER', 'UNDO'}
     
     

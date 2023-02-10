@@ -32,13 +32,13 @@ def general_settings_main_UI(self, context, layout, obj, icon):
     box1 = box.box()
     my_icon = pcoll["Steve"]
     if obj.get("armtype_enum") == 0:
-        box1.label(text= "Arms", icon_value=my_icon.icon_id)
+        box1.label(text= "手臂", icon_value=my_icon.icon_id)
     my_icon = pcoll["Alex"]
     if obj.get("armtype_enum") == 1:
-        box1.label(text= "Arms", icon_value=my_icon.icon_id)
+        box1.label(text= "手臂", icon_value=my_icon.icon_id)
     my_icon = pcoll["DarthLilo"]
     if obj.get("armtype_enum") == 2:
-        box1.label(text= "Arms", icon_value=my_icon.icon_id)
+        box1.label(text= "手臂", icon_value=my_icon.icon_id)
     b = box1.row(align=True)
     b.prop(obj, "armtype_enum", expand=True)
     b = box1.row(align=True)

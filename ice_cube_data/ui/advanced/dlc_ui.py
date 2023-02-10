@@ -247,7 +247,7 @@ def dlc_menu(self, context, layout, rig_baked, main_menu):
                 b1.label(text=f"{dlc_date[dlc_number]}")
                 b1 = box2.row(align=True)
             except:
-                b1.label(text="REFRESH")
+                b1.label(text="刷新")
                 b1 = box2.row(align=True)
 
             b = box.row(align=True)
